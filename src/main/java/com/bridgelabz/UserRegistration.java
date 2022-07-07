@@ -22,6 +22,22 @@ public class UserRegistration {
             System.err.println(firstName + " is Invalid Format");
     }
 
+    public static void checkValidLastName(String lastName) {
+
+        boolean isLastName;
+        String lastNameRegex = "[A-Z]{1}[a-z]{2,}";
+        Pattern patternObject = Pattern.compile(lastNameRegex);
+        if (lastName == null) {
+            isLastName = false;
+        }
+        Matcher matcherObject = patternObject.matcher(lastName);
+        isLastName = matcherObject.matches();
+
+        if (isLastName)
+            System.out.println(lastName + " is Valid");
+        else
+            System.err.println(lastName + " is Invalid Format");
+    }
     public static void main(String[] args) {
 
         System.out.println("Welcome To User Registration");
@@ -30,6 +46,10 @@ public class UserRegistration {
         System.out.println("Enter Your First Name");
         String firstName = scannerObject.next();
         checkValidFirstName(firstName);
+
+        System.out.println("Enter Your Last Name");
+        String lastName = scannerObject.next();
+        checkValidLastName(lastName);
 
         scannerObject.close();
     }
