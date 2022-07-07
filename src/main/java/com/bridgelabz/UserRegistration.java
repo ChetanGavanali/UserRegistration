@@ -25,7 +25,7 @@ public class UserRegistration {
     public static void checkValidLastName(String lastName) {
 
         boolean isLastName;
-        String lastNameRegex = "[A-Z]{1}[a-z]{2,}";
+        String lastNameRegex = "[A-Z][a-z]{3,}";
         Pattern patternObject = Pattern.compile(lastNameRegex);
         if (lastName == null) {
             isLastName = false;
@@ -84,7 +84,7 @@ public class UserRegistration {
         if (isPassword)
             System.out.println(password + " is a Valid  Password");
         else
-            System.out.println(password + " is an Invalid Password");
+            System.out.println(password + " Invalid Password");
     }
 
         public static void main(String[] args) {
