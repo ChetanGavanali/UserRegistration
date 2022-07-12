@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.junit.Junit" tests="10" skipped="0" failures="0" errors="0" timestamp="2022-07-11T05:12:20" hostname="DESKTOP-8DEVOGL" time="0.05">
+  <properties/>
+  <testcase name="firstNameHappy()" classname="com.junit.Junit" time="0.028"/>
+  <testcase name="lastNameSad()" classname="com.junit.Junit" time="0.002"/>
+  <testcase name="lastNameHappy()" classname="com.junit.Junit" time="0.001"/>
+  <testcase name="passwordHappy()" classname="com.junit.Junit" time="0.001"/>
+  <testcase name="emailSad()" classname="com.junit.Junit" time="0.002"/>
+  <testcase name="phoneNumberHappy()" classname="com.junit.Junit" time="0.001"/>
+  <testcase name="phoneNumberSad()" classname="com.junit.Junit" time="0.003"/>
+  <testcase name="emailHappy()" classname="com.junit.Junit" time="0.001"/>
+  <testcase name="passwordSad()" classname="com.junit.Junit" time="0.001"/>
+  <testcase name="firstNameSad()" classname="com.junit.Junit" time="0.001"/>
+  <system-out><![CDATA[true
+false
+true
+true
+false
+true
+false
+true
+false
+false
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
