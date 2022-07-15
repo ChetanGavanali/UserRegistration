@@ -191,4 +191,5 @@ public class UserRegistration {
         checkValidEmail(email);
 
     }
+
 }
