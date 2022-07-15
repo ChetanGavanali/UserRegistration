@@ -1,6 +1,7 @@
 package com.exception;
 
 public class UserRegistrationException extends Throwable {
+
     public ExceptionType exceptionType;
     public String message;
 
@@ -8,14 +9,13 @@ public class UserRegistrationException extends Throwable {
         EMPTY, NULL, INVALID;
     }
 
-    public UserRegistrationException(ExceptionType exceptionType, String message) {
-        this.exceptionType = exceptionType;
+    public UserRegistrationException(String message, ExceptionType exceptionType) {
         this.message = message;
+        this.exceptionType = exceptionType;
     }
 
     @Override
     public String toString() {
         return "UserRegistrationException{" + "exceptionType=" + exceptionType + ", message='" + message + '\'' + '}';
     }
-
 }

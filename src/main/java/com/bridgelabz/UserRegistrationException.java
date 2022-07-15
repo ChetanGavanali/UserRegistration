@@ -1,21 +1,21 @@
 package com.bridgelabz;
 
-public class UserRegistrationException extends Exception {
-    String message;
-    static ExceptionType type;
+public class UserRegistrationException extends Throwable {
 
-    enum ExceptionType {
-        NULL, EMPTY;
+    public ExceptionType exceptionType;
+    public String message;
+
+    public enum ExceptionType {
+        EMPTY, NULL, INVALID;
     }
 
-
-    public UserRegistrationException(ExceptionType type, String message) {
-        this.type = type;
+    public UserRegistrationException(String message, ExceptionType exceptionType) {
         this.message = message;
+        this.exceptionType = exceptionType;
     }
 
     @Override
     public String toString() {
-        return message;
+        return "UserRegistrationException{" + "exceptionType=" + exceptionType + ", message='" + message + '\'' + '}';
     }
 }

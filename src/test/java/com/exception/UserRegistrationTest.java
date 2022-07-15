@@ -1,192 +1,209 @@
 package com.exception;
 
-import org.junit.jupiter.api.Assertions;
+
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 public class UserRegistrationTest {
 
     @Test
     public void whenGivenFirstNameShouldHaveMinimum3CharWithCamelCase() throws UserRegistrationException {
-        UserRegistration validator = new UserRegistration();
-        String firstName = validator.fName("Chetan");
-        Assertions.assertEquals("valid", firstName);
+        try {
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validateFname.validate("Chetan");
+            System.out.println("It is Valid");
+        } catch (UserRegistrationException userRegistrationException) {
+            System.out.println("It is not Valid");
+            Assert.assertEquals("Enter valid FName", userRegistrationException.message);
+        }
     }
 
     @Test
     public void whenGivenFirstNameWithInvalidFName() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.fName("chetan");
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validateFname.validate("chetan");
+            System.out.println("It is Valid");
         } catch (UserRegistrationException userRegistrationException) {
-            Assertions.assertEquals("Enter valid FName", userRegistrationException.message);
+            System.out.println("It is not Valid");
+            Assert.assertEquals("Enter valid FName", userRegistrationException.message);
         }
     }
 
     @Test
     public void whenGivenFirstNameWithEmptyValue() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.fName(" ");
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validateFname.validate("");
+            System.out.println("It is Valid");
         } catch (UserRegistrationException userRegistrationException) {
-            Assertions.assertEquals("Enter valid FName", userRegistrationException.message);
+            System.out.println("It is not Valid");
+            Assert.assertEquals("Enter valid FName", userRegistrationException.message);
         }
     }
 
     @Test
     public void whenGivenFirstNameWithNullValue() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.fName(null);
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validateFname.validate(null);
+            System.out.println("It is not null");
         } catch (NullPointerException nullPointerException) {
-            Assertions.assertNotEquals("valid", nullPointerException.getMessage());
+            System.out.println("It is Null");
+            Assert.assertNotEquals("valid", nullPointerException.getMessage());
         }
     }
 
     @Test
     public void whenGivenLastNameShouldHaveMinimum3CharWithCamelCase() throws UserRegistrationException {
-        UserRegistration validator = new UserRegistration();
-        String lastName = validator.lName("Gavanali");
-        Assertions.assertEquals("valid", lastName);
+        try {
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validateLname.validate("Gavanali");
+            System.out.println("It is not Valid");
+        } catch (UserRegistrationException userRegistrationException) {
+            System.out.println("It is Valid");
+            Assert.assertEquals("Enter valid lName", userRegistrationException.message);
+        }
     }
 
     @Test
     public void whenGivenLastNameWithSmallLetter() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.lName("Gavanali");
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validateLname.validate("gavanali");
         } catch (UserRegistrationException userRegistrationException) {
-            Assertions.assertEquals("Enter a valid lName", userRegistrationException.message);
+            Assert.assertEquals("Enter valid lName", userRegistrationException.message);
         }
     }
 
     @Test
     public void whenGivenLastNameWithEmptyValue() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.lName("");
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validateLname.validate("");
         } catch (UserRegistrationException userRegistrationException) {
-            Assertions.assertEquals("Enter lName", userRegistrationException.message);
+            Assert.assertEquals("Enter valid lName", userRegistrationException.message);
         }
     }
 
     @Test
     public void whenGivenLastNameWithNullValue() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.lName(null);
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validateFname.validate(null);
         } catch (NullPointerException nullPointerException) {
-            Assertions.assertNotEquals("valid", nullPointerException.getMessage());
+            Assert.assertNotEquals("valid", nullPointerException.getMessage());
         }
     }
 
     @Test
     public void whenGivenEmailValid() throws UserRegistrationException {
-        UserRegistration validator = new UserRegistration();
-        String Email = validator.email("abc.xyz@blz.com");
-        Assertions.assertEquals("valid", Email);
+        UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+        validator.validateEmail.validate("abc.xyz@blz.com");
+        Assert.assertEquals("valid", "valid");
     }
 
     @Test
     public void whenGivenEmailWithoutSignShouldReturnInvalid() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.email("abc.xyz.bl.co.in");
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validateEmail.validate("abc.xyz.bl.co.in");
         } catch (UserRegistrationException userRegistrationException) {
-            Assertions.assertEquals("Enter valid Email", userRegistrationException.message);
+            Assert.assertEquals("Enter valid email", userRegistrationException.message);
         }
     }
 
     @Test
     public void whenGivenEmailWithoutSignShouldReturnEmptyValue() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.email("");
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validateEmail.validate("");
         } catch (UserRegistrationException userRegistrationException) {
-            Assertions.assertEquals("Enter valid Email", userRegistrationException.message);
+            Assert.assertEquals("Enter valid email", userRegistrationException.message);
         }
     }
 
     @Test
     public void whenGivenEmailStartWithDotShouldReturnNullValue() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.email(null);
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validateEmail.validate(null);
         } catch (NullPointerException nullPointerException) {
-            Assertions.assertNotEquals("valid", nullPointerException.getMessage());
+            Assert.assertNotEquals("valid", nullPointerException.getMessage());
         }
     }
 
     @Test
     public void whenGivenPhoneNumberValid() throws UserRegistrationException {
-        UserRegistration validator = new UserRegistration();
-        String PhoneNo = validator.number("91 9449441490");
-        Assertions.assertEquals("valid", PhoneNo);
+        UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+        validator.validatePhone.validate("91 9449441490");
+        Assert.assertEquals("valid", "valid");
     }
 
     @Test
     public void whenGivenMobileNoWithoutCountryCodeShouldReturnInvalid() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.number("91 9876544321");
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validatePhone.validate("91 7396382673");
         } catch (UserRegistrationException userRegistrationException) {
-            Assertions.assertEquals("Enter valid Phone", userRegistrationException.message);
+            Assert.assertEquals("Enter valid Phone", userRegistrationException.message);
         }
     }
 
     @Test
     public void whenGivenMobileNoWithoutSpaceShouldReturnEmptyValue() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.number("");
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validatePhone.validate("");
         } catch (UserRegistrationException userRegistrationException) {
-            Assertions.assertEquals("Enter the Phone", userRegistrationException.message);
+            Assert.assertEquals("Enter valid Phone", userRegistrationException.message);
         }
     }
 
     @Test
     public void whenGivenMobilNoStartWithDotShouldReturnNullValue() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.number(null);
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validatePhone.validate(null);
         } catch (NullPointerException nullPointerException) {
-            Assertions.assertNotEquals("valid", nullPointerException.getMessage());
+            Assert.assertNotEquals("valid", nullPointerException.getMessage());
         }
     }
 
     @Test
     public void whenGivenPasswordValid() throws UserRegistrationException {
-        UserRegistration validator = new UserRegistration();
-        String password = validator.password("Abcd@123");
-        Assertions.assertEquals("valid", password);
+        UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+        validator.validatePassword.validate("Abcd@123");
+        Assert.assertEquals("valid", "valid");
     }
 
     @Test
     public void whenGivenPasswordWithoutIntegerCaseShouldReturnInvalid() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.password("nckdf.fdike3");
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validatePassword.validate("nckdf.fdike3");
         } catch (UserRegistrationException userRegistrationException) {
-            Assertions.assertEquals("Enter valid password", userRegistrationException.message);
+            Assert.assertEquals("Enter valid password", userRegistrationException.message);
         }
     }
 
     @Test
     public void whenGivenPasswordWithoutSignShouldReturnEmptyValue() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.password("");
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validatePassword.validate("nc");
         } catch (UserRegistrationException userRegistrationException) {
-            Assertions.assertEquals("Enter Password", userRegistrationException.message);
+            Assert.assertEquals("Enter valid Password", userRegistrationException.message);
         }
     }
 
     @Test
     public void whenGivenPasswordStartWithDotShouldReturnNullValue() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.password(null);
+            UserRegistrationWithLamdaFunctions validator = new UserRegistrationWithLamdaFunctions();
+            validator.validatePassword.validate(null);
         } catch (NullPointerException nullPointerException) {
-            Assertions.assertNotEquals("valid", nullPointerException.getMessage());
+            Assert.assertNotEquals("valid", nullPointerException.getMessage());
         }
     }
 }
